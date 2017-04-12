@@ -19,8 +19,6 @@ BOT_ID = os.environ.get("BOT_ID")
 # constants
 AT_BOT = "<@" + BOT_ID + ">"
 WORKS_COMMAND = "calendar"
-# If modifying these scopes, delete your previously saved credentials
-# at ~/.credentials/calendar-python-quickstart.json
 SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'HelpBot'
@@ -103,7 +101,7 @@ def main():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('calendar', 'v3', http=http)
 
-    now = datetime.datetime.utcnow().isoformat() + ' ' #'Z' indicates UTC time
+    now = datetime.datetime.utcnow().isoformat() + 'Z' #'Z' indicates UTC time
     # print('Getting the upcoming 10 events')
     text = 'Getting the upcoming 10 events'
     slack_client.api_call("chat.postMessage", channel=channel,
